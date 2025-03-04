@@ -29,7 +29,7 @@ const data: data[] =[
 
 export const OverflowComponent = () => {
     return(
-        <div className="overflow-y-auto px-32 py-16" style={{height: 350, backgroundColor: '#EEEEEE'}}>
+        <div className="overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-32 py-16" style={{height: 350, backgroundColor: '#EEEEEE'}}>
             {
                 data?.map((item, index)=>{
                     return(
