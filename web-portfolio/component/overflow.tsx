@@ -27,7 +27,7 @@ const data: data[] =[
     },
 ]
 
-export const OferflowComponent = () => {
+export const OverflowComponent = () => {
     return(
         <div className="overflow-y-auto px-32 py-16" style={{height: 350, backgroundColor: '#EEEEEE'}}>
             {
