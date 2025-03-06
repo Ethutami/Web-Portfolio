@@ -1,6 +1,7 @@
 
 import { OverflowComponent, } from "@/component/overflow";
 import { ImageSlider } from "@/component/slider";
+import { portofolio } from "@/db/datadummy";
 import { ArrowDown, } from "lucide-react";
 import Image from "next/image";  
 
@@ -48,8 +49,14 @@ export default function Home() {
       {/* experience */}
       <div  className="px-32 py-16">
         <p className="font-bold text-4xl text-[#1D1616]">Portfolio</p>
-        <OverflowComponent/>
+        <OverflowComponent data={portofolio}/>
         <ArrowDown className="text-gray-400 relative bottom-0 left-1/2" />
+      </div>
+
+      {/* testimoni */}
+      <div className="px-32 py-16 bg-[#1D1616] ">
+        <p className="font-bold text-4xl text-[#EEEEEE]">Testimoni</p>
+        
       </div>
     </div>
   );
