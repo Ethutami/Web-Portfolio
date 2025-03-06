@@ -1,12 +1,10 @@
 import idPortofolio from "@/interfaces/portofolio.interface"
 
-/* eslint-disable react/no-danger-with-children */
-export const OverflowComponent = (props:[]) => {
-    const data = props?.data || []
+export const OverflowComponent = ({props}: {props:idPortofolio[]}) => {
     return(
-        <div className="overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-32 py-16" style={{height: 350, backgroundColor: '#EEEEEE'}}>
+        <div className="overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" style={{height: 350, backgroundColor: '#EEEEEE', marginTop: 24}}>
             {
-                data.length != 0 && (data?.map((item: idPortofolio[], index: number)=>{
+                props.length != 0 && (props?.map((item: idPortofolio, index: number)=>{
                     console.log(typeof index)
                     return(
                         <div className="flex flex-row" style={{marginBottom: 42}} key={index}>
