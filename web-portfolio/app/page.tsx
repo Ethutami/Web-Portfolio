@@ -56,6 +56,9 @@ export default function Home() {
         <ArrowDown className="text-gray-400 relative bottom-0 left-1/2" />
       </div>
 
+      {/* skill */}
+
+
       {/* testimoni */}
       <div className="px-32 py-16 bg-[#1D1616] ">
         <p className="font-bold text-4xl text-[#EEEEEE]">Testimoni</p>
@@ -63,7 +66,7 @@ export default function Home() {
       </div>
 
       {/* contact */}
-      <div className="px-32 py-16 bg-[#EEEEEE]" >
+      <div className="px-32 py-16" >
         <div className="flex flex-row w-full justify-around " >
             <div style={{width: '20%', marginLeft:24}}  >
                 <div style={{height:'4px',width: "100%",  backgroundColor: '#8E1616',}}></div>
