@@ -1,6 +1,5 @@
 "use client";
 import idTestimoni from "@/interfaces/testimoni.interface";
-// import idTestimoni from "@/interfaces/testimoni.interface"
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
@@ -46,6 +45,5 @@ export const OverflowTestimoni  = ({props}: {props:idTestimoni[]})=>{
           <ChevronRight className="text-gray-400 " />
         </button>
     </div>
-
     )
 }
