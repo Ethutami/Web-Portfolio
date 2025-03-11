@@ -1,13 +1,14 @@
 
+import { ArrowDown, } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";  
+import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
+import { portofolio, testimoni } from "@/db/datadummy";
+import { SkillSection } from "@/pages/skill.section.page";
 import { OverflowComponent, } from "@/component/overflow.portofolio";
 import { OverflowTestimoni } from "@/component/overflow.testimoni";
 import { ImageSlider } from "@/component/slider";
-import { portofolio, testimoni } from "@/db/datadummy";
-import { ArrowDown, } from "lucide-react";
-import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
-import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
-import Image from "next/image";  
-import { SkillSection } from "@/pages/skill.section.page";
 
 export default function Home() {
   return (
@@ -52,7 +53,7 @@ export default function Home() {
 
       {/* experience */}
       <div  className="px-32 py-16">
-        <p className="font-bold text-4xl text-[#1D1616]">Portfolio</p>
+        <p className="font-bold text-4xl text-[#1D1616]">Experience</p>
         <OverflowComponent props={portofolio}/>
         <ArrowDown className="text-gray-400 relative bottom-0 left-1/2" />
       </div>
@@ -80,18 +81,18 @@ export default function Home() {
             </div>
         </div>
         <div className="flex flex-row w-full justify-around ">
-          <a href="https://www.linkedin.com/in/ethikautami/" className="flex items-end">
+          <Link href="https://www.linkedin.com/in/ethikautami/" className="flex items-end">
             <LuLinkedin size={36} color="#8E1616" className="mr-4"/>
             <p>Ethika Utami</p>
-          </a>
-          <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com" className="flex items-end">
+          </Link>
+          <Link href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com" className="flex items-end">
             <MdOutlineEmail size={36} color="#8E1616" className="mr-4"/>
             <p>Ethikautamis@gmail.com</p>
-          </a>
-          <a href={`https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio, %20let's talk about it`} className="flex items-end">
+          </Link>
+          <Link href={`https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio, %20let's talk about it`} className="flex items-end">
             <LuPhoneCall size={36} color="#8E1616" className="mr-4"/>
             <p>082231651307</p>
-          </a>
+          </Link>
           <div className="flex items-end">
             <MdOutlineLocationOn size={36} color="#8E1616" className="mr-4"/>
             <p>Indonesia</p>
