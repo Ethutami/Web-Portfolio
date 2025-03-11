@@ -26,7 +26,7 @@ export default function Home() {
           </button>
         </div>
         <div className="justify-self-center self-center">
-          <Image src={'/picture.jpg'} width={300} height={400} alt="picture"/>
+          <Image src={'/picture.jpg'} width={300} height={400} alt="picture" priority={false}   />
         </div>
         <div className="self-end">
           <p className="font-bold text-4xl">Ethika Utami</p>
