@@ -7,6 +7,7 @@ import { ArrowDown, } from "lucide-react";
 import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import Image from "next/image";  
+import { SkillSection } from "@/pages/skill.section.page";
 
 export default function Home() {
   return (
@@ -57,7 +58,9 @@ export default function Home() {
       </div>
 
       {/* skill */}
-
+      <div  className="px-32 py-16">
+        <SkillSection/>
+      </div>
 
       {/* testimoni */}
       <div className="px-32 py-16 bg-[#1D1616] ">
