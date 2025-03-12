@@ -4,5 +4,9 @@ export default interface imageData {
     title: string;
     projectDate: string,
     detailDescription:string,
+    fitur: string[],
+    projectResult: string,
+    stack: string,
     image: string[],
+    uiResource: string,
 }
