@@ -1,4 +1,3 @@
-
 export default interface idExperience {
     title : string,
     location: string,
