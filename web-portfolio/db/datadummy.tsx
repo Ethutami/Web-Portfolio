@@ -1,7 +1,7 @@
-import idPortofolio from "@/interfaces/portofolio.interface";
+import idExperience from "@/interfaces/experience.interface";
 import idTestimoni from "@/interfaces/testimoni.interface";
 
-export const portofolio: idPortofolio[] = [ 
+export const experience: idExperience[] = [ 
     {
         title : 'QA Manual Tester',
         location: 'Jakarta, Indonesia',

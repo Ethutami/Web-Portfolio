@@ -1,5 +1,5 @@
 
-export default interface idPortofolio {
+export default interface idExperience {
     title : string,
     location: string,
     date: string,

@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";  
 import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
-import { portofolio, testimoni } from "@/db/datadummy";
+import { experience, testimoni } from "@/db/datadummy";
 import { SkillSection } from "@/pages/skill.section.page";
-import { OverflowComponent, } from "@/component/overflow.portofolio";
+import { OverflowComponent, } from "@/component/overflow.experience";
 import { OverflowTestimoni } from "@/component/overflow.testimoni";
 import { ImageSlider } from "@/component/slider";
 
@@ -54,7 +54,7 @@ export default function Home() {
       {/* experience */}
       <div  className="px-32 py-16">
         <p className="font-bold text-4xl text-[#1D1616]">Experience</p>
-        <OverflowComponent props={portofolio}/>
+        <OverflowComponent props={experience}/>
         <ArrowDown className="text-gray-400 relative bottom-0 left-1/2" />
       </div>
 

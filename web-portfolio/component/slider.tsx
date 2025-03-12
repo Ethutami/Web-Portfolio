@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -32,6 +33,8 @@ const images: ImageData[] = [
 
 export const ImageSlider = () =>{
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const router = useRouter()
+
     const prevSlide = (): void => {
         setCurrentIndex(
             (prevIndex) => (prevIndex - 1 + images.length) % images.length
@@ -41,6 +44,7 @@ export const ImageSlider = () =>{
     const nextSlide = (): void => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
+console.log(router.query);
 
   return(
     <div className="relative w-full mx-auto mt-4">
@@ -53,8 +57,7 @@ export const ImageSlider = () =>{
           className="rounded-lg transition-all duration-500"
           style={{marginRight: 24, height: 400}}
           width={600}
-          height={400}
-
+          height={400} 
         />
         {
           images[currentIndex].des &&
@@ -62,10 +65,12 @@ export const ImageSlider = () =>{
               <p className="text-[#EEEEEE]">
                 <b className="text-3xl">{images[currentIndex].title}</b> {images[currentIndex].des}
               </p>
-              <p 
-                className="text-[#D84040] underline"
+              <div 
+                //onClick={() => router.push('/portfolio.detail.page')}
+                className="text-[#D84040] underline" 
                 style={{marginTop:'24px'}}
-                >View more</p>
+                >View more
+              </div>
             </div>)
         }
       </div>
@@ -81,19 +86,6 @@ export const ImageSlider = () =>{
       >
         <ChevronRight className="text-gray-400 " />
       </button>
-      <div className="flex justify-center mt-4">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1 w-10 mx-1 ${
-              index === currentIndex
-                ? "bg-[#beff46] rounded-xl"
-                : "bg-gray-300 rounded-xl"
-            } transition-all duration-500 ease-in-out`}
-          >
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
