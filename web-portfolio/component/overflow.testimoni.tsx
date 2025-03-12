@@ -1,7 +1,7 @@
 "use client";
-import idTestimoni from "@/interfaces/testimoni.interface";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import idTestimoni from "@/interfaces/testimoni.interface";
 
 export const OverflowTestimoni  = ({props}: {props:idTestimoni[]})=>{
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -24,8 +24,8 @@ export const OverflowTestimoni  = ({props}: {props:idTestimoni[]})=>{
                     <div  style={{width: '80%', }}>
                         <p className="text-[#EEEEEE]">{props[currentIndex].desc}</p>
                         <div style={{marginTop:36}}>
-                            <p className="font-bold text-2xl text-[#EEEEEE]">{props[currentIndex].name}</p>
-                            <p className="text-base text-[#EEEEEE]">{props[currentIndex].job}</p>
+                            <p className="font-bold text-xl text-[#EEEEEE]">{props[currentIndex].name}</p>
+                            <p className="text-[#EEEEEE]">{props[currentIndex].job}</p>
                             <div style={{height:'4px',width: 100,  backgroundColor: '#8E1616',}}></div>
                         </div>
                     </div>
