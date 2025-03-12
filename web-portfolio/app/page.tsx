@@ -5,7 +5,7 @@ import Image from "next/image";
 import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import { experience, testimoni } from "@/db/datadummy";
-import { SkillSection } from "@/pages/skill.section.page";
+import { SkillSection } from "./pages/skill.section.page";
 import { OverflowComponent, } from "@/component/overflow.experience";
 import { OverflowTestimoni } from "@/component/overflow.testimoni";
 import { ImageSlider } from "@/component/slider";
