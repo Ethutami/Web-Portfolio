@@ -22,9 +22,9 @@ export const ImageSlider = ({props}: {props:imageData[]}) =>{
     };
 
   return(
-    <div className="relative w-full mx-auto mt-4">
+    <div className="relative w-full mx-auto mt-4 ">
       <div
-        className="flex flex-row bg-slate-50"
+        className="flex flex-row "
       >
         <Image
           src={props[currentIndex].src}
@@ -38,10 +38,12 @@ export const ImageSlider = ({props}: {props:imageData[]}) =>{
           props[currentIndex].des &&
             (<div>
               <p className="text-[#EEEEEE]">
-                <b className="text-3xl">{props[currentIndex].title}</b> {props[currentIndex].des}
+                <b className="text-xl">{props[currentIndex].title}</b> {props[currentIndex].des}
               </p>
               <button 
-                onClick={() => router.push('/pages/portfolio.detail.page')}
+                onClick={() => {
+                  router.push('/pages/portofolio')
+                }}
                 className="text-[#D84040] underline" 
                 style={{marginTop:'24px'}}
                 >View more
