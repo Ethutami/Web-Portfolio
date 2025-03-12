@@ -4,47 +4,22 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import imageData from "@/interfaces/portofolio.interface";
 
-interface ImageData {
-    src: string;
-    des: string;
-    title: string;
-  }
 
-// Image data array
-const images: ImageData[] = [
-    {
-      title: 'Cooksy',
-      src: "/cooksy.jpg",
-      des: "adalah aplikasi resep masakan yang dirancang sebagai proyek pribadi untuk mengasah keterampilan dalam pengembangan aplikasi mobile. Aplikasi ini menyediakan berbagai resep masakan yang lengkap dan mudah diakses, serta dilengkapi dengan fitur-fitur praktis untuk membantu pengguna dalam proses memasak."
-      
-    },
-    {
-      title: 'E-Commerce',
-      src: '/ecommerce.png',
-      des: 'App adalah aplikasi belanja online yang dikembangkan sebagai proyek pribadi untuk meningkatkan keterampilan dalam pengembangan aplikasi mobile. Terinspirasi oleh platform terkemuka seperti Zalora, aplikasi ini dirancang untuk memberikan pengalaman berbelanja yang intuitif, menarik, dan efisien bagi pengguna di seluruh dunia.'
-    },
-    {
-      title: 'Travelook',
-      src: '/travelook.png',
-      des: 'adalah aplikasi inovatif yang dirancang untuk memudahkan pengguna dalam mencari dan memesan villa di berbagai tempat wisata. Dengan antarmuka yang ramah pengguna dan fitur pencarian yang efisien, Travelook memungkinkan pengguna untuk menemukan villa yang sesuai dengan kebutuhan dan preferensi mereka, baik untuk liburan maupun perjalanan singkat.   '
-    },
-  ];
-
-export const ImageSlider = () =>{
+export const ImageSlider = ({props}: {props:imageData[]}) =>{
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const router = useRouter()
 
     const prevSlide = (): void => {
         setCurrentIndex(
-            (prevIndex) => (prevIndex - 1 + images.length) % images.length
+            (prevIndex) => (prevIndex - 1 + props.length) % props.length
         );
     };
 
     const nextSlide = (): void => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % props.length);
     };
-console.log(router.query);
 
   return(
     <div className="relative w-full mx-auto mt-4">
@@ -52,7 +27,7 @@ console.log(router.query);
         className="flex flex-row bg-slate-50"
       >
         <Image
-          src={images[currentIndex].src}
+          src={props[currentIndex].src}
           alt={`Slider Image ${currentIndex + 1}`}
           className="rounded-lg transition-all duration-500"
           style={{marginRight: 24, height: 400}}
@@ -60,17 +35,17 @@ console.log(router.query);
           height={400} 
         />
         {
-          images[currentIndex].des &&
+          props[currentIndex].des &&
             (<div>
               <p className="text-[#EEEEEE]">
-                <b className="text-3xl">{images[currentIndex].title}</b> {images[currentIndex].des}
+                <b className="text-3xl">{props[currentIndex].title}</b> {props[currentIndex].des}
               </p>
-              <div 
-                //onClick={() => router.push('/portfolio.detail.page')}
+              <button 
+                onClick={() => router.push('/pages/portfolio.detail.page')}
                 className="text-[#D84040] underline" 
                 style={{marginTop:'24px'}}
                 >View more
-              </div>
+              </button>
             </div>)
         }
       </div>

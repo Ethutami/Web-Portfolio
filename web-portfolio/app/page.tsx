@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";  
 import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
-import { experience, testimoni } from "@/db/datadummy";
+import { experience, portofolio, testimoni } from "@/db/datadummy";
 import { SkillSection } from "./pages/skill.section.page";
 import { OverflowComponent, } from "@/component/overflow.experience";
 import { OverflowTestimoni } from "@/component/overflow.testimoni";
@@ -48,7 +48,7 @@ export default function Home() {
       {/* portfolio */}
       <div className="px-32 py-16 bg-[#1D1616] ">
         <p className="font-bold text-4xl text-[#EEEEEE]">Portfolio</p>
-        <ImageSlider/>
+        <ImageSlider props={portofolio}/>
       </div>
 
       {/* experience */}
