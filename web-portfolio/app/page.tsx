@@ -5,10 +5,10 @@ import Image from "next/image";
 import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import { experience, portofolio, testimoni } from "@/db/datadummy";
-import { SkillSection } from "./pages/skill/page";
 import { OverflowComponent, } from "@/component/overflow.experience";
 import { OverflowTestimoni } from "@/component/overflow.testimoni";
 import { ImageSlider } from "@/component/slider";
+import SkillSection from "./pages/skill/page";
 
 export default function Home() {
   const scrollToBottom = () => {
