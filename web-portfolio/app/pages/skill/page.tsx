@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function SkillSection() {
+export default function SkillSection() {
     return(
       <div>
         <div className="flex flex-row justify-around mb-20" >
