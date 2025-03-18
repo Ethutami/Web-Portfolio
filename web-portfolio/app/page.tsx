@@ -1,12 +1,22 @@
-
-import { OverflowComponent, } from "@/component/overflow.portofolio";
+'use client';
+import { ArrowDown, } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";  
+import { LuLinkedin, LuPhoneCall, } from "react-icons/lu";
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
+import { experience, portofolio, testimoni } from "@/db/datadummy";
+import { SkillSection } from "./pages/skill/page";
+import { OverflowComponent, } from "@/component/overflow.experience";
 import { OverflowTestimoni } from "@/component/overflow.testimoni";
 import { ImageSlider } from "@/component/slider";
-import { portofolio, testimoni } from "@/db/datadummy";
-import { ArrowDown, } from "lucide-react";
-import Image from "next/image";  
 
 export default function Home() {
+  const scrollToBottom = () => {
+    const bottomElement = document.getElementById('contact');
+    if (bottomElement) {
+      bottomElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="">
       {/* general information */}
@@ -17,12 +27,13 @@ export default function Home() {
           </p>
           <button 
             type="button" 
-            className="text-[#D84040] hover:text-[#EEEEEE] border border-[#D84040] hover:bg-[#8E1616] rounded-lg px-5 py-2.5 text-center me-2 mb-2 w-fit absolute bottom-0 left-0">
+            className="text-[#D84040] hover:text-[#EEEEEE] border border-[#D84040] hover:bg-[#8E1616] rounded-lg px-5 py-2.5 text-center me-2 mb-2 w-fit absolute bottom-0 left-0"
+            onClick={scrollToBottom}>
             Contact Me
           </button>
         </div>
-        <div className="justify-self-center self-center">
-          <Image src={'/picture.jpg'} width={300} height={400} alt="picture"/>
+        <div className="justify-self-center self-center ">
+          <Image src={'/picture.jpg'} width={300} height={300} alt="picture" priority={false} className="rounded-full w-80 h-80 z-10"   />
         </div>
         <div className="self-end">
           <p className="font-bold text-4xl">Ethika Utami</p>
@@ -44,20 +55,56 @@ export default function Home() {
       {/* portfolio */}
       <div className="px-32 py-16 bg-[#1D1616] ">
         <p className="font-bold text-4xl text-[#EEEEEE]">Portfolio</p>
-        <ImageSlider/>
+        <ImageSlider props={portofolio}/>
       </div>
 
       {/* experience */}
       <div  className="px-32 py-16">
-        <p className="font-bold text-4xl text-[#1D1616]">Portfolio</p>
-        <OverflowComponent props={portofolio}/>
-        <ArrowDown className="text-gray-400 relative bottom-0 left-1/2" />
+        <p className="font-bold text-4xl text-[#1D1616]">Experience</p>
+        <OverflowComponent props={experience}/>
+        <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
+      </div>
+
+      {/* skill */}
+      <div  className="px-32 py-16">
+        <SkillSection/>
       </div>
 
       {/* testimoni */}
       <div className="px-32 py-16 bg-[#1D1616] ">
         <p className="font-bold text-4xl text-[#EEEEEE]">Testimoni</p>
         <OverflowTestimoni props={testimoni}/>
+      </div>
+
+      {/* contact */}
+      <div id="contact" className="px-32 py-16" >
+        <div className="flex flex-row w-full justify-around " >
+            <div style={{width: '20%', marginLeft:24}}  >
+                <div style={{height:'4px',width: "100%",  backgroundColor: '#8E1616',}}></div>
+            </div>
+            <p className="font-bold text-4xl text-[#8E1616]">Contact</p>
+            <div style={{width: '20%', marginRight:24 }}  >
+                <div style={{height:'4px',width: "100%",  backgroundColor: '#8E1616',}}></div>
+            </div>
+        </div>
+        <div className="flex flex-row w-full justify-around ">
+          <Link href="https://www.linkedin.com/in/ethikautami/" className="flex items-end">
+            <LuLinkedin size={36} color="#8E1616" className="mr-4"/>
+            <p>Ethika Utami</p>
+          </Link>
+          <Link href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com" className="flex items-end">
+            <MdOutlineEmail size={36} color="#8E1616" className="mr-4"/>
+            <p>Ethikautamis@gmail.com</p>
+          </Link>
+          <Link href={`https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio, %20let's talk about it`} className="flex items-end">
+            <LuPhoneCall size={36} color="#8E1616" className="mr-4"/>
+            <p>082231651307</p>
+          </Link>
+          <div className="flex items-end">
+            <MdOutlineLocationOn size={36} color="#8E1616" className="mr-4"/>
+            <p>Indonesia</p>
+          </div>
+        </div>
       </div>
     </div>
   );

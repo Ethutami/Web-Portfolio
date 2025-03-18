@@ -1,7 +1,12 @@
-
-export default interface idPortofolio {
-    title : string,
-    location: string,
-    date: string,
-    desc: string
+export default interface imageData {
+    src: string;
+    des: string;
+    title: string;
+    projectDate: string,
+    detailDescription:string,
+    fitur: string[],
+    projectResult: string,
+    stack: string,
+    image: string[],
+    uiResource: string,
 }

@@ -1,11 +1,10 @@
-import idPortofolio from "@/interfaces/portofolio.interface"
+import idExperience from "@/interfaces/experience.interface"
 
-export const OverflowComponent = ({props}: {props:idPortofolio[]}) => {
+export const OverflowComponent = ({props}: {props:idExperience[]}) => {
     return(
         <div className="overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" style={{height: 350, backgroundColor: '#EEEEEE', marginTop: 24}}>
             {
-                props.length != 0 && (props?.map((item: idPortofolio, index: number)=>{
-                    console.log(typeof index)
+                props.length != 0 && (props?.map((item: idExperience, index: number)=>{
                     return(
                         <div className="flex flex-row" style={{marginBottom: 42}} key={index}>
                             <div style={{width: '10%',}}  >

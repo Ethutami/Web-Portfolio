@@ -1,71 +1,60 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import imageData from "@/interfaces/portofolio.interface";
 
-interface ImageData {
-    src: string;
-    des: string;
-    title: string;
-  }
 
-// Image data array
-const images: ImageData[] = [
-    {
-      title: 'Cooksy',
-      src: "/cooksy.jpg",
-      des: "adalah aplikasi resep masakan yang dirancang sebagai proyek pribadi untuk mengasah keterampilan dalam pengembangan aplikasi mobile. Aplikasi ini menyediakan berbagai resep masakan yang lengkap dan mudah diakses, serta dilengkapi dengan fitur-fitur praktis untuk membantu pengguna dalam proses memasak."
-      
-    },
-    {
-      title: 'E-Commerce',
-      src: '/ecommerce.png',
-      des: 'App adalah aplikasi belanja online yang dikembangkan sebagai proyek pribadi untuk meningkatkan keterampilan dalam pengembangan aplikasi mobile. Terinspirasi oleh platform terkemuka seperti Zalora, aplikasi ini dirancang untuk memberikan pengalaman berbelanja yang intuitif, menarik, dan efisien bagi pengguna di seluruh dunia.'
-    },
-    {
-      title: 'Travelook',
-      src: '/travelook.png',
-      des: 'adalah aplikasi inovatif yang dirancang untuk memudahkan pengguna dalam mencari dan memesan villa di berbagai tempat wisata. Dengan antarmuka yang ramah pengguna dan fitur pencarian yang efisien, Travelook memungkinkan pengguna untuk menemukan villa yang sesuai dengan kebutuhan dan preferensi mereka, baik untuk liburan maupun perjalanan singkat.   '
-    },
-  ];
-
-export const ImageSlider = () =>{
+export const ImageSlider = ({props}: {props:imageData[]}) =>{
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const router = useRouter()
+
     const prevSlide = (): void => {
         setCurrentIndex(
-            (prevIndex) => (prevIndex - 1 + images.length) % images.length
+            (prevIndex) => (prevIndex - 1 + props.length) % props.length
         );
     };
 
     const nextSlide = (): void => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % props.length);
+    };
+
+    const handleClick = () => {
+      const itemData = props[currentIndex];  // Ambil data item yang sesuai
+      const itemString = JSON.stringify(itemData);  // Ubah objek menjadi string JSON
+      const encodedItem = encodeURIComponent(itemString);  // Encode agar aman digunakan di URL
+
+      // Kirim data sebagai query parameter yang sudah di-encode
+      router.push(`/pages/portofolio?item=${encodedItem}`);
     };
 
   return(
-    <div className="relative w-full mx-auto mt-4">
+    <div className="relative w-full mx-auto mt-4 ">
       <div
-        className="flex flex-row bg-slate-50"
+        className="flex flex-row "
       >
         <Image
-          src={images[currentIndex].src}
+          src={props[currentIndex].src}
           alt={`Slider Image ${currentIndex + 1}`}
           className="rounded-lg transition-all duration-500"
           style={{marginRight: 24, height: 400}}
           width={600}
-          height={400}
-
+          height={400} 
         />
         {
-          images[currentIndex].des &&
+          props[currentIndex].des &&
             (<div>
               <p className="text-[#EEEEEE]">
-                <b className="text-3xl">{images[currentIndex].title}</b> {images[currentIndex].des}
+                <b className="text-xl">{props[currentIndex].title}</b> {props[currentIndex].des}
               </p>
-              <p 
-                className="text-[#D84040] underline"
+              <button 
+                onClick={() => handleClick()}
+                className="text-[#D84040] underline" 
                 style={{marginTop:'24px'}}
-                >View more</p>
+                >View more
+              </button>
             </div>)
         }
       </div>
@@ -81,19 +70,6 @@ export const ImageSlider = () =>{
       >
         <ChevronRight className="text-gray-400 " />
       </button>
-      <div className="flex justify-center mt-4">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1 w-10 mx-1 ${
-              index === currentIndex
-                ? "bg-[#beff46] rounded-xl"
-                : "bg-gray-300 rounded-xl"
-            } transition-all duration-500 ease-in-out`}
-          >
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
