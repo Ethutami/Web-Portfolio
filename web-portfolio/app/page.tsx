@@ -1,3 +1,4 @@
+'use client';
 import { ArrowDown, } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";  
@@ -10,6 +11,12 @@ import { OverflowTestimoni } from "@/component/overflow.testimoni";
 import { ImageSlider } from "@/component/slider";
 
 export default function Home() {
+  const scrollToBottom = () => {
+    const bottomElement = document.getElementById('contact');
+    if (bottomElement) {
+      bottomElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="">
       {/* general information */}
@@ -20,12 +27,13 @@ export default function Home() {
           </p>
           <button 
             type="button" 
-            className="text-[#D84040] hover:text-[#EEEEEE] border border-[#D84040] hover:bg-[#8E1616] rounded-lg px-5 py-2.5 text-center me-2 mb-2 w-fit absolute bottom-0 left-0">
+            className="text-[#D84040] hover:text-[#EEEEEE] border border-[#D84040] hover:bg-[#8E1616] rounded-lg px-5 py-2.5 text-center me-2 mb-2 w-fit absolute bottom-0 left-0"
+            onClick={scrollToBottom}>
             Contact Me
           </button>
         </div>
-        <div className="justify-self-center self-center">
-          <Image src={'/picture.jpg'} width={300} height={400} alt="picture" priority={false}   />
+        <div className="justify-self-center self-center ">
+          <Image src={'/picture.jpg'} width={300} height={300} alt="picture" priority={false} className="rounded-full w-80 h-80 z-10"   />
         </div>
         <div className="self-end">
           <p className="font-bold text-4xl">Ethika Utami</p>
@@ -54,7 +62,7 @@ export default function Home() {
       <div  className="px-32 py-16">
         <p className="font-bold text-4xl text-[#1D1616]">Experience</p>
         <OverflowComponent props={experience}/>
-        <ArrowDown className="text-gray-400 relative bottom-0 left-1/2" />
+        <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
       </div>
 
       {/* skill */}
@@ -69,7 +77,7 @@ export default function Home() {
       </div>
 
       {/* contact */}
-      <div className="px-32 py-16" >
+      <div id="contact" className="px-32 py-16" >
         <div className="flex flex-row w-full justify-around " >
             <div style={{width: '20%', marginLeft:24}}  >
                 <div style={{height:'4px',width: "100%",  backgroundColor: '#8E1616',}}></div>
