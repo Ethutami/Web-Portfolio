@@ -60,36 +60,36 @@ export const portofolio: imageData[] =[
     {
         title: "Cooksy",
         src: "/cooksy.jpg",
-        des: "adalah aplikasi resep masakan yang dirancang sebagai proyek pribadi untuk mengasah keterampilan dalam pengembangan aplikasi mobile. Aplikasi ini menyediakan berbagai resep masakan yang lengkap dan mudah diakses, serta dilengkapi dengan fitur-fitur praktis untuk membantu pengguna dalam proses memasak.",
+        des: "is a culinary recipe application developed as a personal project aimed at enhancing skills in mobile application development. The app offers a diverse collection of comprehensive and easily accessible recipes, supplemented by practical features to assist users throughout the cooking process.",
         projectDate: "2021",
-        detailDescription:"Menggunakan React Native untuk membangun antarmuka pengguna yang responsif dan intuitif. Cooksy adalah aplikasi yang dirancang untuk membantu pengguna dalam proses memasak dengan menyediakan berbagai resep masakan serta fitur timer dan asisten memasak. Aplikasi ini bertujuan untuk membuat pengalaman memasak lebih menyenangkan dan efisien.",
+        detailDescription:"Utilizing React Native to build a responsive and intuitive user interface, Cooksy is an application designed to assist users in the cooking process by providing a variety of recipes, along with features such as a timer and cooking assistant. The application aims to enhance the cooking experience, making it more enjoyable and efficient.",
         fitur: [
-            'Daftar Resep: Menyediakan berbagai resep yang dapat dipilih sesuai selera pengguna.',
-            'Timer Memasak: Fitur untuk mengatur waktu memasak secara otomatis sesuai dengan langkah-langkah resep.',
-            'Asisten Memasak: Panduan interaktif yang membantu pengguna mengikuti resep langkah demi langkah.',
+            'Recipe List: Offers a diverse selection of recipes that users can choose from based on their preferences.',
+            'Cooking Timer: A feature that automatically sets cooking times according to the steps outlined in the recipes.',
+            'Cooking Assistant: An interactive guide that helps users follow recipes step by step.',
         ],
-        projectResult: 'Cooksy menghasilkan aplikasi yang fungsional dan user-friendly, memungkinkan pengguna untuk menemukan resep dengan mudah, mengatur waktu memasak, dan mendapatkan bimbingan langsung saat memasak. Aplikasi ini bertujuan untuk meningkatkan keterampilan memasak pengguna dan membuat pengalaman memasak lebih terorganisir.',
+        projectResult: `Cooksy offers a highly functional and user-friendly application that empowers users to effortlessly discover recipes, configure cooking timers, and receive real-time guidance during the cooking process. The application is designed to enhance users' culinary skills and provide a more organized and efficient cooking experience.`,
         stack: 'React Native Framework, Redux State Management, Axios API Public, Figma.',
         image:[
             "/cooksy1.png", 
             "/cooksy2.png", 
             "/cooksy3.png",
             ],
-        uiResource: '*ui resource : free figma design'
+        uiResource: '*ui resource : Public UI design'
     },
     {
         title: 'E-Commerce',
         src: '/ecommerce.png',
-        des: 'app adalah aplikasi belanja online yang dikembangkan sebagai proyek pribadi untuk meningkatkan keterampilan dalam pengembangan aplikasi mobile. Terinspirasi oleh platform terkemuka seperti Zalora, aplikasi ini dirancang untuk memberikan pengalaman berbelanja yang intuitif, menarik, dan efisien bagi pengguna di seluruh dunia.',
+        des: 'app is an online shopping application developed as a personal project to enhance skills in mobile application development. Inspired by leading platforms such as Zalora, this app is designed to provide users worldwide with an intuitive, engaging, and efficient shopping experience.',
         projectDate: "2021",
-        detailDescription:"Menggunakan React Native untuk membangun antarmuka yang responsif dan menarik. Aplikasi E-commerce dikembangkan sebagai proyek latihan untuk menyediakan platform jual beli produk fashion secara online. Aplikasi ini bertujuan untuk mempermudah pengguna dalam menjelajahi, memilih, dan membeli produk fashion dengan cara yang sederhana dan efisien.",
+        detailDescription:"Utilizing React Native to build a responsive and engaging interface, the eCommerce app is developed as a practice project to provide an online platform for buying and selling fashion products. The application aims to simplify the process for users to explore, select, and purchase fashion items in a straightforward and efficient manner.",
         fitur: [
-            'Katalog Produk: Menampilkan berbagai item fashion dengan gambar, deskripsi, dan harga.',
-            'Keranjang Belanja: Memungkinkan pengguna untuk menyimpan produk yang ingin dibeli sebelum melakukan checkout.',
-            'Pembayaran Online: Integrasi metode pembayaran untuk transaksi yang aman dan mudah.',
-            'Profil Pengguna: Fitur untuk mengelola informasi akun dan riwayat pembelian.',
+            'Product Catalog: Displays a variety of fashion items, complete with images, descriptions, and prices.',
+            'Shopping Cart: Allows users to save products they wish to purchase before proceeding to checkout.',
+            'Online Payment: Integration of payment methods for secure and convenient transactions.',
+            'User Profile: A feature for managing account information and purchase history.',
         ],
-        projectResult: 'Aplikasi E-commerce menghasilkan platform yang intuitif dan menarik bagi pengguna, memungkinkan mereka untuk dengan mudah menemukan dan membeli produk fashion secara online. Aplikasi ini memberikan pengalaman belanja yang nyaman dan menyenangkan.',
+        projectResult: 'The eCommerce application creates an intuitive and engaging platform for users, enabling them to easily discover and purchase fashion products online. It provides a convenient and enjoyable shopping experience.',
         stack: 'React Native Framework, Redux State Management, Axios, API Public, Figma.',
         image:[
             "/e-commerce1.png", 
@@ -97,21 +97,21 @@ export const portofolio: imageData[] =[
             "/e-commerce3.png",
             "/e-commerce4.png",
             ],
-        uiResource: '*ui resource : free figma design'
+        uiResource: '*ui resource : Public UI design'
     },
     {
         title: 'Travelook',
         src: '/travelook.png',
-        des: 'adalah aplikasi inovatif yang dirancang untuk memudahkan pengguna dalam mencari dan memesan villa di berbagai tempat wisata. Dengan antarmuka yang ramah pengguna dan fitur pencarian yang efisien, Travelook memungkinkan pengguna untuk menemukan villa yang sesuai dengan kebutuhan dan preferensi mereka, baik untuk liburan maupun perjalanan singkat.',
+        des: 'is an innovative application designed to simplify the process of searching for and booking villas at various tourist destinations. With a user-friendly interface and efficient search features, Travelook enables users to find villas that meet their needs and preferences, whether for vacations or short getaways.',
         projectDate: "2021",
-        detailDescription:"Travelook dikembangkan sebagai tugas akhir dalam program bootcamp, dengan tujuan untuk menyediakan platform pemesanan hotel dan villa secara online. Aplikasi ini bertujuan untuk memudahkan pengguna dalam mencari, membandingkan, dan memesan akomodasi dengan cepat dan efisien.",
+        detailDescription:"Travelook was developed as a final project in a bootcamp program, aiming to provide an online platform for booking hotels and villas. The application is designed to facilitate users in quickly and efficiently searching, comparing, and reserving accommodations.",
         fitur: [
-            'Pencarian Akomodasi: Memungkinkan pengguna untuk mencari hotel dan villa berdasarkan lokasi, tanggal, dan jumlah tamu.',
-            'Detail Properti: Menampilkan informasi lengkap tentang setiap akomodasi, termasuk gambar, deskripsi, dan fasilitas.',
-            'Pemesanan Online: Fitur untuk memproses pemesanan secara langsung dengan pilihan metode pembayaran yang aman.',
-            'Ulasan Pengguna: Memungkinkan pengguna memberikan ulasan dan rating terhadap akomodasi yang telah mereka kunjungi.',
+            'Accommodation Search: Enables users to search for hotels and villas based on location, dates, and number of guests.',
+            'Property Details: Displays comprehensive information about each accommodation, including images, descriptions, and amenities.',
+            'Online Booking: A feature that allows for direct processing of reservations with secure payment options.',
+            'User Reviews: Allows users to provide reviews and ratings for accommodations they have visited.',
         ],
-        projectResult: 'Travelook menghasilkan aplikasi yang fungsional dan user-friendly, memungkinkan pengguna untuk dengan mudah mencari dan memesan hotel dan villa. Dengan fitur-fitur yang lengkap, aplikasi ini memberikan pengalaman yang nyaman dan praktis dalam merencanakan perjalanan.',
+        projectResult: 'Travelook delivers a functional and user-friendly application that enables users to easily search for and book hotels and villas. With a comprehensive set of features, the app provides a comfortable and practical experience for planning trips.',
         stack: 'React Native framework, Redux State Management, Axios, Postman, Figma.',
         image:[
             "/travelook1.png", 
@@ -120,7 +120,7 @@ export const portofolio: imageData[] =[
             "/travelook4.png", 
             "/travelook5.png",
             ],
-        uiResource: '*ui resource : internal design'
+        uiResource: '*ui resource : Internal design'
       },
  
 ];
