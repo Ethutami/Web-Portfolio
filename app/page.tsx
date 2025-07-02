@@ -4,6 +4,26 @@ import IUser from "@/interfaces/user.interface";
 import { fetchUserById } from "@/services/user.service";
 import Image from "next/image";
 
+const icons = [{
+  icon: '/mobile-icon.png',
+  width: '60px',
+  height: '70px',
+  title: 'Mobile Development'
+},
+{
+  icon: '/web-icon.png',
+  width: '65px',
+  height: '50px',
+  title: 'Web Development',
+},
+{
+  icon: '/be-icon.png',
+  width: '60px',
+  height: '50px',
+  title: 'Backend Development'
+}
+]
+
 export default function Home() {
   const [user, setUser] = useState<IUser>()
 
@@ -24,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className="px-16 pt-32">
+    <div className="px-8 lg:px-16 md:px-16 lg:pt-26">
       <>{/* Hero section */}
         <div className="hidden lg:flex lg:flex-row justify-between mb-40 md:hidden">
           <div className="max-w-[30%] content-center relative">
@@ -65,6 +85,35 @@ export default function Home() {
         </div>
       </>
       <>{/* about */}
+        <div className="flex lg:flex-row lg:py-20 flex-col-reverse">
+          <div className="lg:w-1/3 mr-26 w-full">
+            <div className="flex lg:flex-col md:flex-row justify-center ">
+              {icons.map((item, i) => {
+                return (
+                  <div className="flex flex-col md:flex-row md:items-center lg:flex-row lg:items-center mb-8 md:mr-8 w-full" key={i}>
+                    <div style={{ height: 70, width: '4px', backgroundColor: '#8E1616', marginRight: 42, }} className="hidden lg:block"></div>
+                    <div className="md:w-[60px] lg:w-[20%] lg:mr-10 md:mr-4 mb-4">
+                      <Image src={item.icon} alt="icon"
+                        width={100}
+                        height={100}
+                        priority={false}
+                        style={{ width: `${item.width}`, height: `${item.height}` }}
+                        className="object-contain" />
+                    </div>
+                    <h3 className="lg:text-lg md:text-sm text-xs font-semibold  ">{item.title}</h3>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <div className="lg:w-3/5 mb-20">
+            <p className="font-bold text-4xl text-[#EEEEEE]">About</p>
+            <p className="text-[#EEEEEE] mt-11" >{user?.about}</p>
+          </div>
+
+        </div>
+      </>
+      <>{/* portfolio */}
       </>
     </div>
   );
