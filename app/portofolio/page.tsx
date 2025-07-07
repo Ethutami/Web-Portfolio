@@ -28,17 +28,17 @@ function Detail() {
     const endDate = createDateFormatter(data?.project_end_date || '').MMMYYY().build()
 
     return (
-        <div className="px-32 pt-32 mb-40">
-            <p className="font-bold text-4xl text-[#1D1616]">{data?.project_title}</p>
-            <div className="ml-14 mt-11">
+        <div className="px-16 pt-16 lg:px-32 lg:pt-32 mb-40">
+            <p className="font-bold text-4xl">{data?.project_title}</p>
+            <div className="mt-11">
                 <div className="flex flex-row items-center">
-                    <div style={{ height: '4px', width: 200, backgroundColor: '#8E1616', marginRight: 36 }}></div>
+                    <div className="h-1 w-[80px] md:w-[200px] bg-[#8E1616] mr-6 md:mr-9"></div>
                     <p className="font-semibold text-xl text-[#8E1616]">{startDate == endDate ? startDate : `${startDate} - ${endDate}`}</p>
                 </div>
                 <p className="mt-6">{data?.detail_description}</p>
                 <p className="mt-6">{data?.project_result}</p>
                 <div className="mt-6">
-                    <p className="font-semibold text-xl text-[#1D1616]">Fitur :</p>
+                    <p className="font-semibold text-xl text-[#8E1616]">Fitur :</p>
                     {
                         data?.fitur.map((item: string, i: number) => {
                             return (
@@ -47,15 +47,15 @@ function Detail() {
                         })
                     }
                 </div>
-                <div className="mt-6 flex flex-row items-center">
-                    <p className="text-[#1D1616] text-xl font-semibold ">Stack :</p>
-                    <p className="text-[#1D1616] ml-3">{data?.stack}</p>
+                <div className="mt-6">
+                    <p className="font-semibold text-xl text-[#8E1616]">Stack :</p>
+                    <p >{data?.stack}</p>
                 </div>
-                <div className="flex flex-row mt-16 justify-around">
+                <div className="flex flex-col md:flex-row mt-16 items-center md:justify-around">
                     {
                         data?.image_preview.map((item: string, i: number) => {
                             return (
-                                <div key={i} >
+                                <div key={i} className="mt-10">
                                     <Image
                                         src={item}
                                         alt={'image'}
@@ -69,7 +69,7 @@ function Detail() {
                 </div>
                 <p className="mt-4 italic">{data?.ui_source}</p>
             </div>
-        </div>
+        </div >
     )
 
 }
