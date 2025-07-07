@@ -1,12 +1,15 @@
 'use client';
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ArrowDown } from "lucide-react";
 import IUser from "@/interfaces/user.interface";
 import imageData from "@/interfaces/portofolio.interface";
+import idExperience from "@/interfaces/experience.interface";
 import { fetchUserById } from "@/services/user.service";
 import { getSortedPortfolio } from "@/services/portfolio.service";
+import { fetchExperience } from "@/services/experience.service";
+import { OverflowComponent } from "./experiences/overflow.experience";
 import { ImageSlider } from "./portofolio/slider";
-
 
 const icons = [{
   icon: '/mobile-icon.png',
@@ -31,13 +34,16 @@ const icons = [{
 export default function Home() {
   const [user, setUser] = useState<IUser>()
   const [portfolio, setPortofolio] = useState<imageData[]>()
+  const [experience, setExperience] = useState<idExperience[]>()
 
   useEffect(() => {
     const fetchuser = async () => {
       const dataUser = await fetchUserById(1);
       const dataPortfolios = await getSortedPortfolio()
+      const dataExperiences = await fetchExperience()
       setUser(dataUser);
       setPortofolio(dataPortfolios)
+      setExperience(dataExperiences)
     };
 
     fetchuser();
@@ -65,7 +71,7 @@ export default function Home() {
             </button>
           </div>
           <div className="justify-self-center self-center ">
-            <Image src={user?.image_url || '/picture.jpg'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+            <Image src={user?.image_url || ''} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
           </div>
           <div className="self-end w-[30%]">
             <p className="font-bold text-4xl ">{user?.name}</p>
@@ -86,7 +92,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-center">
             <div className="justify-self-center self-center ">
-              <Image src={user?.image_url || '/picture.jpg'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+              <Image src={user?.image_url || ''} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
             </div>
           </div>
         </div>
@@ -123,6 +129,13 @@ export default function Home() {
         <div className="py-16">
           <p className="font-bold text-4xl text-[#EEEEEE] animate-fade-left">Portfolio</p>
           {portfolio ? <ImageSlider props={portfolio} /> : ''}
+        </div>
+      </>
+      <>{/* experience */}
+        <div className="py-16">
+          <p className="font-bold text-4xl">Experience</p>
+          {experience ? <OverflowComponent props={experience} /> : ''}
+          <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
         </div>
       </>
     </div>
