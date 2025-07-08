@@ -1,103 +1,197 @@
+'use client';
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ArrowDown } from "lucide-react";
+import IUser from "@/interfaces/user.interface";
+import imageData from "@/interfaces/portofolio.interface";
+import idExperience from "@/interfaces/experience.interface";
+import { fetchUserById } from "@/services/user.service";
+import { getSortedPortfolio } from "@/services/portfolio.service";
+import { fetchExperience } from "@/services/experience.service";
+import { OverflowComponent } from "./experiences/overflow.experience";
+import { ImageSlider } from "./portofolio/slider";
+import SkillSection from "./skill/page";
+import Link from "next/link";
+import { LuLinkedin, LuPhoneCall } from "react-icons/lu";
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
+
+const icons = [{
+  icon: '/mobile-icon.png',
+  width: '60px',
+  height: '70px',
+  title: 'Mobile Development'
+},
+{
+  icon: '/web-icon.png',
+  width: '65px',
+  height: '50px',
+  title: 'Web Development',
+},
+{
+  icon: '/be-icon.png',
+  width: '60px',
+  height: '50px',
+  title: 'Backend Development'
+}
+]
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [user, setUser] = useState<IUser>()
+  const [portfolio, setPortofolio] = useState<imageData[]>()
+  const [experience, setExperience] = useState<idExperience[]>()
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const fetchuser = async () => {
+      const dataUser = await fetchUserById(1);
+      const dataPortfolios = await getSortedPortfolio()
+      const dataExperiences = await fetchExperience()
+      setUser(dataUser);
+      setPortofolio(dataPortfolios)
+      setExperience(dataExperiences)
+    };
+
+    fetchuser();
+  }, [])
+
+  const scrollToBottom = () => {
+    const bottomElement = document.getElementById('contact');
+    if (bottomElement) {
+      bottomElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="px-8 lg:px-16 md:px-16 lg:pt-26">
+      <>{/* Hero section */}
+        <div className="hidden lg:flex lg:flex-row justify-between mb-40 md:hidden">
+          <div className="max-w-[30%] content-center relative">
+            <p>{user?.overview}
+            </p>
+            <button
+              type="button"
+              className="animate-fade-right animate-thrice text-[#F7374F] hover:text-[#fff] border border-[#F7374F] hover:border-none hover:bg-[#F7374F] rounded-lg px-5 py-2.5 text-center me-2 mb-2 w-fit absolute bottom-0 left-0"
+              onClick={scrollToBottom}>
+              Contact Me
+            </button>
+          </div>
+          <div className="justify-self-center self-center ">
+            <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+          </div>
+          <div className="self-end w-[30%]">
+            <p className="font-bold text-4xl ">{user?.name}</p>
+            <p className="font-semibold ">{user?.job_title}</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="flex flex-col md:flex-row items-center justify-center min-h-screen lg:hidden">
+          <div className="flex-1 text-center md:text-start mb-10 md:mr-20">
+            <h1 className="text-4xl font-bold ">Hello.</h1>
+            <p className="text-5xl font-bold  mb-8">I am Utami</p>
+            <p className="leading-relaxed mb-12">{user?.overview} </p>
+            <button
+              type="button"
+              className="animate-fade-right animate-thrice inline-block text-[#F7374F] hover:text-[#fff] border border-[#F7374F] hover:border-none hover:bg-[#F7374F] rounded-lg px-5 py-2.5 text-center me-2 mb-2 w-fit"
+              onClick={scrollToBottom}>
+              Contact Me
+            </button>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="justify-self-center self-center ">
+              <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+            </div>
+          </div>
+        </div>
+      </>
+      <>{/* about */}
+        <div className="flex mt-16 md:mt-0 lg:flex-row lg:py-20 flex-col-reverse ">
+          <div className="lg:w-1/3 mr-26 w-full">
+            <div className="flex lg:flex-col md:flex-row justify-center ">
+              {icons.map((item, i) => {
+                return (
+                  <div className="flex flex-col md:flex-row md:items-center lg:flex-row lg:items-center mb-8 md:mr-8 w-full" key={i}>
+                    <div style={{ height: 70, width: '4px', backgroundColor: '#8E1616', marginRight: 42, }} className="hidden lg:block"></div>
+                    <div className="md:w-[60px] lg:w-[20%] lg:mr-10 md:mr-4 mb-4 animate-pulse animate-once animate-delay-500">
+                      <Image src={item.icon} alt="icon"
+                        width={100}
+                        height={100}
+                        priority={false}
+                        style={{ width: `${item.width}`, height: `${item.height}` }}
+                        className="object-contain" />
+                    </div>
+                    <h3 className="lg:text-lg md:text-sm text-xs font-semibold animate-fade-left animate-delay-500">{item.title}</h3>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <div className="lg:w-3/5 mb-20">
+            <p className="font-bold text-4xl text-[#EEEEEE] animate-fade-left animate-delay-500">About</p>
+            <p className="text-[#EEEEEE] mt-11 animate-fade-left animate-delay-2000" >{user?.about}</p>
+          </div>
+        </div>
+      </>
+      <>{/* portfolio */}
+        <div className="py-16">
+          <p className="font-bold text-4xl text-[#EEEEEE] animate-fade-left">Portfolio</p>
+          {portfolio ? <ImageSlider props={portfolio} /> : ''}
+        </div>
+      </>
+      <>{/* experience */}
+        <div className="py-16">
+          <p className="font-bold text-4xl">Experience</p>
+          {experience ? <OverflowComponent props={experience} /> : ''}
+          <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
+        </div>
+      </>
+      <>{/* skill */}
+        <div className="py-16">
+          <SkillSection />
+        </div>
+      </>
+      <> {/* contact */}
+        <div id="contact" className="py-16 w-full">
+          <div className="flex justify-center items-center mb-10 w-full">
+            <div className="hidden sm:block w-[20%] mx-6">
+              <div className="h-1 bg-[#8E1616] w-full"></div>
+            </div>
+            <p className="font-bold text-4xl text-center">Contact</p>
+            <div className="hidden sm:block w-[20%] mx-6">
+              <div className="h-1 bg-[#8E1616] w-full"></div>
+            </div>
+          </div>
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 max-w-[320px] sm:max-w-[600px] lg:max-w-[1200px] mx-auto px-4"
+          >
+            {[{
+              href: "https://www.linkedin.com/in/ethikautami/",
+              icon: <LuLinkedin size={36} color="#8E1616" />,
+              text: "Ethika Utami"
+            }, {
+              href: "https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com",
+              icon: <MdOutlineEmail size={36} color="#8E1616" />,
+              text: "Ethikautamis@gmail.com"
+            }, {
+              href: "https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio,%20let's%20talk%20about%20it",
+              icon: <LuPhoneCall size={36} color="#8E1616" />,
+              text: "082231651307"
+            }].map(({ href, icon, text }) => (
+              <Link key={text} href={href} className="w-full max-w-[280px] mx-auto">
+                <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
+                  <div className="flex justify-center">{icon}</div>
+                  <p className="text-left">{text}</p>
+                </div>
+              </Link>
+            ))}
+            <div className="w-full max-w-[280px] mx-auto">
+              <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
+                <div className="flex justify-center">
+                  <MdOutlineLocationOn size={36} color="#8E1616" />
+                </div>
+                <p className="text-left">Indonesia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   );
 }
