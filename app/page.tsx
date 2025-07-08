@@ -11,6 +11,9 @@ import { fetchExperience } from "@/services/experience.service";
 import { OverflowComponent } from "./experiences/overflow.experience";
 import { ImageSlider } from "./portofolio/slider";
 import SkillSection from "./skill/page";
+import Link from "next/link";
+import { LuLinkedin, LuPhoneCall } from "react-icons/lu";
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 
 const icons = [{
   icon: '/mobile-icon.png',
@@ -142,6 +145,51 @@ export default function Home() {
       <>{/* skill */}
         <div className="py-16">
           <SkillSection />
+        </div>
+      </>
+      <> {/* contact */}
+        <div id="contact" className="py-16 w-full">
+          <div className="flex justify-center items-center mb-10 w-full">
+            <div className="hidden sm:block w-[20%] mx-6">
+              <div className="h-1 bg-[#8E1616] w-full"></div>
+            </div>
+            <p className="font-bold text-4xl text-center">Contact</p>
+            <div className="hidden sm:block w-[20%] mx-6">
+              <div className="h-1 bg-[#8E1616] w-full"></div>
+            </div>
+          </div>
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 max-w-[320px] sm:max-w-[600px] lg:max-w-[1200px] mx-auto px-4"
+          >
+            {[{
+              href: "https://www.linkedin.com/in/ethikautami/",
+              icon: <LuLinkedin size={36} color="#8E1616" />,
+              text: "Ethika Utami"
+            }, {
+              href: "https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com",
+              icon: <MdOutlineEmail size={36} color="#8E1616" />,
+              text: "Ethikautamis@gmail.com"
+            }, {
+              href: "https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio,%20let's%20talk%20about%20it",
+              icon: <LuPhoneCall size={36} color="#8E1616" />,
+              text: "082231651307"
+            }].map(({ href, icon, text }) => (
+              <Link key={text} href={href} className="w-full max-w-[280px] mx-auto">
+                <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
+                  <div className="flex justify-center">{icon}</div>
+                  <p className="text-left">{text}</p>
+                </div>
+              </Link>
+            ))}
+            <div className="w-full max-w-[280px] mx-auto">
+              <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
+                <div className="flex justify-center">
+                  <MdOutlineLocationOn size={36} color="#8E1616" />
+                </div>
+                <p className="text-left">Indonesia</p>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     </div>
