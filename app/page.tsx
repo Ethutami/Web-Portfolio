@@ -10,6 +10,7 @@ import { getSortedPortfolio } from "@/services/portfolio.service";
 import { fetchExperience } from "@/services/experience.service";
 import { OverflowComponent } from "./experiences/overflow.experience";
 import { ImageSlider } from "./portofolio/slider";
+import SkillSection from "./skill/page";
 
 const icons = [{
   icon: '/mobile-icon.png',
@@ -71,7 +72,7 @@ export default function Home() {
             </button>
           </div>
           <div className="justify-self-center self-center ">
-            <Image src={user?.image_url || ''} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+            <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
           </div>
           <div className="self-end w-[30%]">
             <p className="font-bold text-4xl ">{user?.name}</p>
@@ -92,7 +93,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-center">
             <div className="justify-self-center self-center ">
-              <Image src={user?.image_url || ''} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+              <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
             </div>
           </div>
         </div>
@@ -136,6 +137,11 @@ export default function Home() {
           <p className="font-bold text-4xl">Experience</p>
           {experience ? <OverflowComponent props={experience} /> : ''}
           <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
+        </div>
+      </>
+      <>{/* skill */}
+        <div className="py-16">
+          <SkillSection />
         </div>
       </>
     </div>
