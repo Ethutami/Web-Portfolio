@@ -1,19 +1,20 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowDown } from "lucide-react";
-import IUser from "@/interfaces/user.interface";
-import imageData from "@/interfaces/portofolio.interface";
-import idExperience from "@/interfaces/experience.interface";
-import { fetchUserById } from "@/services/user.service";
-import { getSortedPortfolio } from "@/services/portfolio.service";
-import { fetchExperience } from "@/services/experience.service";
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
+import { LuLinkedin, LuPhoneCall } from "react-icons/lu";
+
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "@/store";
+import { getExperiences } from "@/store/experience.action";
+import { getUser } from "@/store/user.action";
+import { getPortfolios } from "@/store/portofolio.action";
+
 import { OverflowComponent } from "./experiences/overflow.experience";
 import { ImageSlider } from "./portofolio/slider";
 import SkillSection from "./skill/page";
-import Link from "next/link";
-import { LuLinkedin, LuPhoneCall } from "react-icons/lu";
-import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 
 const icons = [{
   icon: '/mobile-icon.png',
@@ -36,22 +37,23 @@ const icons = [{
 ]
 
 export default function Home() {
-  const [user, setUser] = useState<IUser>()
-  const [portfolio, setPortofolio] = useState<imageData[]>()
-  const [experience, setExperience] = useState<idExperience[]>()
+  const dispatch = useAppDispatch();
+  const { experience, loading: experienceLoading, error: experienceError } = useSelector(
+    (state: RootState) => state.experience
+  );
+  const { user, loading: userLoading, error: userError } = useSelector(
+    (state: RootState) => state.user
+  );
 
   useEffect(() => {
-    const fetchuser = async () => {
-      const dataUser = await fetchUserById(1);
-      const dataPortfolios = await getSortedPortfolio()
-      const dataExperiences = await fetchExperience()
-      setUser(dataUser);
-      setPortofolio(dataPortfolios)
-      setExperience(dataExperiences)
-    };
-
-    fetchuser();
-  }, [])
+    try {
+      dispatch(getExperiences());
+      dispatch(getUser());
+      dispatch(getPortfolios())
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dispatch,]);
 
   const scrollToBottom = () => {
     const bottomElement = document.getElementById('contact');
@@ -63,6 +65,8 @@ export default function Home() {
   return (
     <div className="px-8 lg:px-16 md:px-16 lg:pt-26">
       <>{/* Hero section */}
+        {userLoading && <p>Loading...</p>}
+        {userError && <p>Error: {userError}</p>}
         <div className="hidden lg:flex lg:flex-row justify-between mb-40 md:hidden">
           <div className="max-w-[30%] content-center relative">
             <p>{user?.overview}
@@ -75,7 +79,7 @@ export default function Home() {
             </button>
           </div>
           <div className="justify-self-center self-center ">
-            <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+            <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={true} className="rounded-full -full h-full object-cover animate-jump" />
           </div>
           <div className="self-end w-[30%]">
             <p className="font-bold text-4xl ">{user?.name}</p>
@@ -96,7 +100,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-center">
             <div className="justify-self-center self-center ">
-              <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={false} className="rounded-full -full h-full object-cover animate-jump" />
+              <Image src={user?.image_url || '/user.png'} width={300} height={300} alt="picture" priority={true} className="rounded-full -full h-full object-cover animate-jump" />
             </div>
           </div>
         </div>
@@ -132,13 +136,15 @@ export default function Home() {
       <>{/* portfolio */}
         <div className="py-16">
           <p className="font-bold text-4xl text-[#EEEEEE] animate-fade-left">Portfolio</p>
-          {portfolio ? <ImageSlider props={portfolio} /> : ''}
+          <ImageSlider />
         </div>
       </>
       <>{/* experience */}
         <div className="py-16">
           <p className="font-bold text-4xl">Experience</p>
-          {experience ? <OverflowComponent props={experience} /> : ''}
+          {experienceLoading && <p>Loading...</p>}
+          {experienceError && <p>Error: {experienceError}</p>}
+          <OverflowComponent props={experience} />
           <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
         </div>
       </>

@@ -3,38 +3,45 @@ import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { RootState } from "@/store";
+import { useSelector } from "react-redux";
 import { CircleChevronLeft, CircleChevronRight } from "lucide-react";
-import imageData from "../../interfaces/portofolio.interface";
 import createDateFormatter from "../../component/dateFormater";
 
-export const ImageSlider = ({ props }: { props: imageData[] }) => {
+export const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const router = useRouter();
 
+  const { portfolio, loading: portfolioLoading, error: portfolioError } = useSelector(
+    (state: RootState) => state.portfolio
+  );
+
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + props.length) % props.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + portfolio.length) % portfolio.length);
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % props.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % portfolio.length);
   };
 
   const handleClick = () => {
-    const itemData = props[currentIndex];
+    const itemData = portfolio[currentIndex];
     const itemString = JSON.stringify(itemData);
     const encodedItem = encodeURIComponent(itemString);
     router.push(`/portofolio?item=${encodedItem}`);
   };
 
-  if (!props || props.length === 0) {
+  if (!portfolio || portfolio.length === 0) {
     return <p className="text-[#EEEEEE] mt-11">Loading ...</p>;
   }
 
-  const item = props[currentIndex];
-  const date = createDateFormatter(props[currentIndex].project_start_date).YYYY().build()
+  const item = portfolio[currentIndex];
+  const date = createDateFormatter(portfolio[currentIndex].project_start_date).YYYY().build()
 
   return (
     <div className="relative w-full mx-auto mt-0 md:mt-8" key={item.id}>
+      {portfolioLoading && <p>Loading...</p>}
+      {portfolioError && <p>Error: {portfolioError}</p>}
       <div className="flex flex-col lg:flex-row ">
         <Image
           src={item.banner_url}
