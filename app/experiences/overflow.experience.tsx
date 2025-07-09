@@ -1,13 +1,13 @@
-import idExperience from "@/interfaces/experience.interface"
+import iExperience from "@/interfaces/experience.interface"
 import createDateFormatter from "@/component/dateFormater"
 
-export const OverflowComponent = ({ props }: { props: idExperience[] }) => {
+export const OverflowComponent = ({ props }: { props: iExperience[] }) => {
     return (
         <div
             className="overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             style={{ height: 600, marginTop: 24 }}>
             {
-                props.length != 0 && (props?.map((item: idExperience, index: number) => {
+                props.length != 0 && (props?.map((item: iExperience, index: number) => {
                     const startDate = createDateFormatter(item?.start_date).MMMYYY().build()
                     const endDate = createDateFormatter(item?.end_date).MMMYYY().build()
                     return (

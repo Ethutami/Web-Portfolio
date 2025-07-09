@@ -61,6 +61,7 @@ function Detail() {
                                         alt={'image'}
                                         width={200}
                                         height={500}
+                                        className="h-[500px] w-[200px] object-contain"
                                     />
                                 </div>
                             )

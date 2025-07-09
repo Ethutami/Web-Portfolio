@@ -15,6 +15,6 @@ export async function fetchExperience() {
             return data?.data;
         }
     } catch (error) {
-        console.log(error);
+        console.error('Failed to fetch experience:', error);
     }
 }

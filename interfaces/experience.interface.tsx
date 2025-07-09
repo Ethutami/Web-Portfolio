@@ -1,4 +1,4 @@
-export default interface idExperience {
+export default interface iExperience {
     position_name: string,
     company_name: string,
     start_date: string,
