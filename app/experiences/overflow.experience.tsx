@@ -12,16 +12,16 @@ export const OverflowComponent = ({ props }: { props: iExperience[] }) => {
                     const endDate = createDateFormatter(item?.end_date).MMMYYY().build()
                     return (
                         <div className="flex flex-col lg:flex-row" style={{ marginBottom: 42 }} key={index}>
-                            <div className="w-full lg:w-[15%]">
+                            <div className="w-full mb-2 lg:w-[15%]">
                                 <p>{startDate} - {endDate}</p>
                             </div>
                             <div className="flex flex-row w-full lg:w-[85%]">
-                                <div style={{ height: 100, width: '4px', backgroundColor: '#8E1616', marginRight: 42, position: "relative", top: 15 }}></div>
-                                <div style={{ width: '85%' }}>
-                                    <p className="font-semibold text-xl">{item?.position_name}</p>
-                                    <p className="font-semibold text-lg text-[#8E1616]">{item?.company_name}</p>
-                                    <p className="text-[#8E1616]">{item?.company_address}</p>
-                                    <p style={{ marginTop: 10 }} >{item?.job_description}</p>
+                                <div className="relative top-4 bg-[#4F98CA] dark:bg-[#AD49E1] h-18 w-1 mr-6" ></div>
+                                <div className="w-[85%]">
+                                    <p className="highlight_section_title">{item?.position_name}</p>
+                                    <p className="section-title">{item?.company_name}</p>
+                                    <p className="muted">{item?.company_address}</p>
+                                    <p className="mt-4">{item?.job_description}</p>
                                 </div>
                             </div>
                         </div>

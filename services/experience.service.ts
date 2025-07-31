@@ -1,4 +1,4 @@
-import { API_URL } from "../app/config";
+const API_URL = 'http://localhost:8010'
 
 export async function fetchExperience() {
     try {
@@ -12,7 +12,8 @@ export async function fetchExperience() {
 
         if (response.ok) {
             const data = await response.json();
-            return data?.data;
+            const sortedData = data?.data?.sort((a: { id: number; }, b: { id: number; }) => a.id - b.id);
+            return sortedData;
         }
     } catch (error) {
         console.error('Failed to fetch experience:', error);

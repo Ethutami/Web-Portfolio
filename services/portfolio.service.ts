@@ -1,4 +1,5 @@
-import { API_URL } from "../app/config";
+// import { API_URL } from "../app/config";
+const API_URL = 'http://localhost:8010'
 import imageData from "../interfaces/portofolio.interface";
 
 function sortPortfolioByStartDateDescending(data: imageData[]): imageData[] {

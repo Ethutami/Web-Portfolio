@@ -11,7 +11,6 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
-  font-weight: 100;
 }
 
 .title {
@@ -20,23 +19,33 @@ body {
   font-size: 1.25rem;
 }
 
-.sub_title {
+.section-title {
   color: var(--foreground);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem
+}
+
+.highlight_section_title {
+  color: #4F98CA;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .muted {
   color: #9AA6B2;
-  font-size: 0.875rem;
   font-weight: 400;
+  font-size: 0.875rem;
 }
 
 .github-icon path {
   fill: black;
 }
 
-.default_button {
+.icon {
+  color: #4F98CA;
+}
+
+.default_btn {
   background-color: #4F98CA;
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -46,12 +55,12 @@ body {
   border-radius: 8px;
 }
 
-.default_button:hover {
+.default_btn:hover {
   background-color: #EFFFFB;
   color: #4F98CA;
 }
 
-.secound_button {
+.secound_btn {
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
   padding: 1rem;
@@ -61,10 +70,17 @@ body {
   border-width: 2px;
 }
 
-.secound_button:hover {
+.secound_btn:hover {
   background-color: #4F98CA;
   color: #EFFFFB;
   border-color: var(--background);
+}
+
+.action_btn {
+  color: #EFFFFB;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: underline;
 }
 
 .banner {
@@ -79,19 +95,7 @@ body {
     font-size: 16px;
   }
 
-  .title {
-    color: var(--foreground);
-    font-weight: 700;
-    font-size: 1.875rem
-  }
-
-  .muted {
-    color: #9AA6B2;
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-  .default_button {
+  .default_btn {
     background-color: #4F98CA;
     font-size: 18px;
     font-weight: 500;
@@ -100,9 +104,7 @@ body {
 
   .banner {
     width: 100%;
-    /* full container width */
     margin-left: 0;
-    /* reset margin negatif */
   }
 
 }
@@ -113,23 +115,33 @@ body {
     --foreground: #ffffff;
   }
 
+  .highlight_section_title {
+    color: #AD49E1;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
   .github-icon path {
     fill: var(--foreground)
   }
 
-  .default_button {
+  .icon {
+    color: #AD49E1;
+  }
+
+  .default_btn {
     background-color: #AD49E1;
     font-size: 18px;
     font-weight: 500;
     border-radius: 8px;
   }
 
-  .default_button:hover {
+  .default_btn:hover {
     background-color: #EBD3F8;
     color: #AD49E1;
   }
 
-  .secound_button {
+  .secound_btn {
     color: var(--foreground);
     transition: background-color 0.3s ease, color 0.3s ease;
     padding: 1rem;
@@ -139,9 +151,16 @@ body {
     border-width: 2px;
   }
 
-  .secound_button:hover {
+  .secound_btn:hover {
     background-color: #AD49E1;
     color: #EBD3F8;
     border-color: var(--background);
+  }
+
+  .action_btn {
+    color: #EBD3F8;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-decoration: underline;
   }
 }
