@@ -50,7 +50,7 @@ export const ImageSlider = () => {
         />
         <div className="mt-8 lg:mt-0">
           <p className="animate-fade-left animate-delay-500">
-            <b className="highlight_section_title">{item.project_title}</b> {item.description}
+            <b className="highlight-section-title">{item.project_title}</b> {item.description}
           </p>
           <div className="flex items-center mt-6">
             <button

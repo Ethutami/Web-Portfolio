@@ -25,7 +25,7 @@ body {
   font-size: 1rem
 }
 
-.highlight_section_title {
+.highlight-section-title {
   color: #4F98CA;
   font-weight: 600;
   font-size: 1rem;
@@ -45,7 +45,7 @@ body {
   color: #4F98CA;
 }
 
-.default_btn {
+.default-btn {
   background-color: #4F98CA;
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -55,12 +55,12 @@ body {
   border-radius: 8px;
 }
 
-.default_btn:hover {
+.default-btn:hover {
   background-color: #EFFFFB;
   color: #4F98CA;
 }
 
-.secound_btn {
+.secound-btn {
   color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
   padding: 1rem;
@@ -70,7 +70,7 @@ body {
   border-width: 2px;
 }
 
-.secound_btn:hover {
+.secound-btn:hover {
   background-color: #4F98CA;
   color: #EFFFFB;
   border-color: var(--background);
@@ -95,7 +95,7 @@ body {
     font-size: 16px;
   }
 
-  .default_btn {
+  .default-btn {
     background-color: #4F98CA;
     font-size: 18px;
     font-weight: 500;
@@ -115,7 +115,7 @@ body {
     --foreground: #ffffff;
   }
 
-  .highlight_section_title {
+  .highlight-section-title {
     color: #AD49E1;
     font-weight: 600;
     font-size: 1rem;
@@ -129,19 +129,19 @@ body {
     color: #AD49E1;
   }
 
-  .default_btn {
+  .default-btn {
     background-color: #AD49E1;
     font-size: 18px;
     font-weight: 500;
     border-radius: 8px;
   }
 
-  .default_btn:hover {
+  .default-btn:hover {
     background-color: #EBD3F8;
     color: #AD49E1;
   }
 
-  .secound_btn {
+  .secound-btn {
     color: var(--foreground);
     transition: background-color 0.3s ease, color 0.3s ease;
     padding: 1rem;
@@ -151,7 +151,7 @@ body {
     border-width: 2px;
   }
 
-  .secound_btn:hover {
+  .secound-btn:hover {
     background-color: #AD49E1;
     color: #EBD3F8;
     border-color: var(--background);

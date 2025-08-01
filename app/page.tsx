@@ -130,7 +130,7 @@ export default function Home() {
             <p>{user?.overview}</p>
             <button
               type="button"
-              className="default_btn animate-fade-right animate-thrice text-center  w-fit absolute bottom-0 left-0"
+              className="default-btn animate-fade-right animate-thrice text-center  w-fit absolute bottom-0 left-0"
               onClick={scrollToBottom}>
               Contact Me
             </button>
@@ -150,7 +150,7 @@ export default function Home() {
             <p className="leading-relaxed mb-12">{user?.overview} </p>
             <button
               type="button"
-              className="default_btn animate-fade-right animate-thrice inline-block text-center mb-2 w-fit"
+              className="default-btn animate-fade-right animate-thrice inline-block text-center mb-2 w-fit"
               onClick={scrollToBottom}>
               Contact Me
             </button>

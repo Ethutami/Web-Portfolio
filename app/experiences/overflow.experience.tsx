@@ -18,7 +18,7 @@ export const OverflowComponent = ({ props }: { props: iExperience[] }) => {
                             <div className="flex flex-row w-full lg:w-[85%]">
                                 <div className="relative top-4 bg-[#4F98CA] dark:bg-[#AD49E1] h-18 w-1 mr-6" ></div>
                                 <div className="w-[85%]">
-                                    <p className="highlight_section_title">{item?.position_name}</p>
+                                    <p className="highlight-section-title">{item?.position_name}</p>
                                     <p className="section-title">{item?.company_name}</p>
                                     <p className="muted">{item?.company_address}</p>
                                     <p className="mt-4">{item?.job_description}</p>
