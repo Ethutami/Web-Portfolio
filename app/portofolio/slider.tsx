@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { RootState } from "@/store";
-import { useSelector } from "react-redux";
 import { CircleChevronLeft, CircleChevronRight } from "lucide-react";
-import createDateFormatter from "../../component/dateFormater";
+import { RootState } from "@/store";
 
 export const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -35,34 +34,33 @@ export const ImageSlider = () => {
     return <p className="text-[#EEEEEE] mt-11">Loading ...</p>;
   }
 
-  const item = portfolio[currentIndex];
-  const date = createDateFormatter(portfolio[currentIndex].project_start_date).YYYY().build()
+  const item = portfolio[currentIndex]
 
   return (
-    <div className="relative w-full mx-auto mt-0 md:mt-8" key={item.id}>
+    <div className="relative w-full mx-auto mt-8" key={item.id}>
       {portfolioLoading && <p>Loading...</p>}
       {portfolioError && <p>Error: {portfolioError}</p>}
       <div className="flex flex-col lg:flex-row ">
         <Image
           src={item.banner_url}
           alt={`Slider Image ${currentIndex + 1}`}
-          className="rounded-lg transition-all duration-500 animate-jump-in animate-once object-contain"
-          style={{ marginRight: 24, height: 400 }}
+          className="h-auto w-screen lg:w-auto lg:mr-24 transition-all duration-500 animate-jump-in animate-once object-contain"
           width={600}
           height={400}
         />
-        <div className="md:mt-8 lg:mt-0">
-          <p className="text-[#EEEEEE] animate-fade-left animate-delay-500">
-            <b className="text-xl">{item.project_title}</b> {item.description}
+        <div className="mt-8 lg:mt-0">
+          <p className="animate-fade-left animate-delay-500">
+            <b className="highlight-section-title">{item.project_title}</b> {item.description}
           </p>
-          <p className="text-[#EEEEEE] font-semibold text-lg mt-6 animate-fade-left animate-delay-500">Created at: {date}</p>
-          <button
-            onClick={handleClick}
-            className="text-[#D84040] underline animate-fade-up animate-thrice"
-            style={{ marginTop: '24px' }}
-          >
-            View more
-          </button>
+          <div className="flex items-center mt-6">
+            <button
+              onClick={handleClick}
+              className="action_btn mr-2"
+            >
+              See Details
+            </button>
+            <p className="text-[#91C8E4] dark:text-[#EBD3F8] animate-fade-right animate-infinite">&rarr;</p>    {/* arrow right */}
+          </div>
           <div className="flex flex-row flex-wrap mt-16 items-start pl-0">
             {item.stack_list?.map((icon, i) => (
               <div
@@ -87,13 +85,13 @@ export const ImageSlider = () => {
         className="absolute left-0 top-1/2 transform h-[459px] rounded-xl mx-1 -translate-y-1/2 p-2 group"
         onClick={prevSlide}
       >
-        <CircleChevronLeft className="text-[#D84040] animate-fade-left animate-infinite" size={42} />
+        <CircleChevronLeft className="icon animate-fade-left animate-infinite" size={42} />
       </button>
       <button
         className="absolute right-0 top-1/2 transform h-[459px] rounded-xl mx-1 -translate-y-1/2 p-2 group"
         onClick={nextSlide}
       >
-        <CircleChevronRight className="text-[#D84040] animate-fade-right animate-infinite" size={42} />
+        <CircleChevronRight className="icon animate-fade-right animate-infinite" size={42} />
       </button>
     </div>
   );
