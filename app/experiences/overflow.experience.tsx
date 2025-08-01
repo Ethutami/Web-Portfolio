@@ -16,7 +16,7 @@ export const OverflowComponent = ({ props }: { props: iExperience[] }) => {
                                 <p>{startDate} - {endDate}</p>
                             </div>
                             <div className="flex flex-row w-full lg:w-[85%]">
-                                <div className="relative top-4 bg-[#4F98CA] dark:bg-[#AD49E1] h-18 w-1 mr-6" ></div>
+                                <div className="line relative top-4 h-18 w-1 mr-6"></div>
                                 <div className="w-[85%]">
                                     <p className="highlight-section-title">{item?.position_name}</p>
                                     <p className="section-title">{item?.company_name}</p>

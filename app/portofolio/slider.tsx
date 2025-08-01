@@ -59,7 +59,7 @@ export const ImageSlider = () => {
             >
               See Details
             </button>
-            <p className="text-[#EBD3F8] animate-fade-right animate-infinite">&rarr;</p>    {/* arrow right */}
+            <p className="text-[#91C8E4] dark:text-[#EBD3F8] animate-fade-right animate-infinite">&rarr;</p>    {/* arrow right */}
           </div>
           <div className="flex flex-row flex-wrap mt-16 items-start pl-0">
             {item.stack_list?.map((icon, i) => (
@@ -85,13 +85,13 @@ export const ImageSlider = () => {
         className="absolute left-0 top-1/2 transform h-[459px] rounded-xl mx-1 -translate-y-1/2 p-2 group"
         onClick={prevSlide}
       >
-        <CircleChevronLeft className="text-[#D84040] animate-fade-left animate-infinite" size={42} />
+        <CircleChevronLeft className="icon animate-fade-left animate-infinite" size={42} />
       </button>
       <button
         className="absolute right-0 top-1/2 transform h-[459px] rounded-xl mx-1 -translate-y-1/2 p-2 group"
         onClick={nextSlide}
       >
-        <CircleChevronRight className="text-[#D84040] animate-fade-right animate-infinite" size={42} />
+        <CircleChevronRight className="icon animate-fade-right animate-infinite" size={42} />
       </button>
     </div>
   );

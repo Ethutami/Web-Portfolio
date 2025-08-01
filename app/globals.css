@@ -56,7 +56,7 @@ body {
 }
 
 .default-btn:hover {
-  background-color: #EFFFFB;
+  background-color: #91C8E4;
   color: #4F98CA;
 }
 
@@ -72,15 +72,23 @@ body {
 
 .secound-btn:hover {
   background-color: #4F98CA;
-  color: #EFFFFB;
+  color: #91C8E4;
   border-color: var(--background);
 }
 
 .action_btn {
-  color: #EFFFFB;
+  color: #91C8E4;
   font-size: 0.875rem;
   font-weight: 400;
   text-decoration: underline;
+}
+
+.action_btn:hover {
+  color: #4F98CA
+}
+
+.line {
+  background-color: #4F98CA;
 }
 
 .banner {
@@ -162,5 +170,9 @@ body {
     font-size: 0.875rem;
     font-weight: 400;
     text-decoration: underline;
+  }
+
+  .line {
+    background-color: #AD49E1;
   }
 }

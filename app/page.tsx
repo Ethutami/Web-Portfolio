@@ -167,11 +167,10 @@ export default function Home() {
           <div className="flex flex-col justify-center ">
             {icons.map((item, i) => (
               <div
-                // className="flex flex-col md:flex-row md:items-center lg:flex-row lg:items-center mb-8 md:mr-8 w-full"
                 className="flex flex-row w-full mb-2 items-center-safe "
                 key={i}
               >
-                <div className="hidden md:block lg:block h-20 w-1 mr-8 bg-[#4F98CA] dark:bg-[#AD49E1]"></div>
+                <div className="line hidden md:block lg:block h-20 w-1 mr-8"></div>
                 <div
                   className="mr-8 md:mr-0 w-1/5 lg:w-1/3 animate-pulse animate-once animate-delay-500"
                 >
@@ -207,11 +206,11 @@ export default function Home() {
       <section id="contact" className="py-16 w-full">{/* contact */}
         <div className="flex justify-center items-center mb-10 w-full">
           <div className="hidden sm:block w-[20%] mx-6">
-            <div className="h-1 bg-[#8E1616] w-full"></div>
+            <div className="line h-1 w-full"></div>
           </div>
           <p className="font-bold text-4xl text-center">Contact</p>
           <div className="hidden sm:block w-[20%] mx-6">
-            <div className="h-1 bg-[#8E1616] w-full"></div>
+            <div className="line h-1 w-full"></div>
           </div>
         </div>
         <div
