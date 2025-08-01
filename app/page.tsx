@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
+import { useSelector } from "react-redux";
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md";
 import { LuLinkedin, LuPhoneCall } from "react-icons/lu";
 
-import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "@/store";
 import { getExperiences } from "@/store/experience.action";
 import { getUser } from "@/store/user.action";
@@ -122,9 +122,9 @@ export default function Home() {
 
   return (
     <div className="px-6 lg:px-16 md:px-16 lg:pt-26">
-      <>{/* Hero section */}
-        {userLoading && <p>Loading...</p>}
-        {userError && <p>Error: {userError}</p>}
+      {userError && <p>Error: {userError}</p>}
+      {userLoading && <p>Loading...</p>}
+      <section>{/* Hero section */}
         <div className="hidden lg:flex lg:flex-row justify-between mb-40 md:hidden">
           <div className="max-w-[30%] content-center relative">
             <p>{user?.overview}</p>
@@ -161,102 +161,92 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </>
-      <>{/* about */}
-        <div className="flex flex-col-reverse mt-16 md:mt-0 lg:flex-row lg:py-20  ">
-          <div className="lg:w-1/3 mr-26 w-full">
-            <div className="flex flex-col justify-center ">
-              {icons.map((item, i) => (
+      </section>
+      <section className="flex flex-col-reverse mt-16 md:mt-0 lg:flex-row lg:py-20  "> {/*about */}
+        <div className="lg:w-1/3 mr-26 w-full">
+          <div className="flex flex-col justify-center ">
+            {icons.map((item, i) => (
+              <div
+                // className="flex flex-col md:flex-row md:items-center lg:flex-row lg:items-center mb-8 md:mr-8 w-full"
+                className="flex flex-row w-full mb-2 items-center-safe "
+                key={i}
+              >
+                <div className="hidden md:block lg:block h-20 w-1 mr-8 bg-[#4F98CA] dark:bg-[#AD49E1]"></div>
                 <div
-                  // className="flex flex-col md:flex-row md:items-center lg:flex-row lg:items-center mb-8 md:mr-8 w-full"
-                  className="flex flex-row w-full mb-2 items-center-safe "
-                  key={i}
+                  className="mr-8 md:mr-0 w-1/5 lg:w-1/3 animate-pulse animate-once animate-delay-500"
                 >
-                  <div className="hidden md:block lg:block h-20 w-1 mr-8 bg-[#4F98CA] dark:bg-[#AD49E1]"></div>
-                  <div
-                    className="mr-8 md:mr-0 w-1/5 lg:w-1/3 animate-pulse animate-once animate-delay-500"
-                  >
-                    {item.icon}
-                  </div>
+                  {item.icon}
+                </div>
 
-                  <h3 className="animate-fade-left animate-delay-500">
-                    {item.title}
-                  </h3>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="lg:w-3/5 mb-20">
-            <p className="section-title animate-fade-left animate-delay-500">About</p>
-            <p className="mt-6 animate-fade-left animate-delay-2000" >{user?.about}</p>
-          </div>
-        </div>
-      </>
-      <>{/* portfolio */}
-        <div className="mt-16 md:py-16 ">
-          <p className="section-title animate-fade-left">Portfolio</p>
-          <ImageSlider />
-        </div>
-      </>
-      <>{/* experience */}
-        <div className="py-16">
-          <p className="section-title">Experience</p>
-          {experienceLoading && <p>Loading...</p>}
-          {experienceError && <p>Error: {experienceError}</p>}
-          <OverflowComponent props={experience} />
-          <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
-        </div>
-      </>
-      <>{/* skill */}
-        <div className="py-16">
-          <SkillSection />
-        </div>
-      </>
-      <> {/* contact */}
-        <div id="contact" className="py-16 w-full">
-          <div className="flex justify-center items-center mb-10 w-full">
-            <div className="hidden sm:block w-[20%] mx-6">
-              <div className="h-1 bg-[#8E1616] w-full"></div>
-            </div>
-            <p className="font-bold text-4xl text-center">Contact</p>
-            <div className="hidden sm:block w-[20%] mx-6">
-              <div className="h-1 bg-[#8E1616] w-full"></div>
-            </div>
-          </div>
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 max-w-[320px] sm:max-w-[600px] lg:max-w-[1200px] mx-auto px-4"
-          >
-            {[{
-              href: "https://www.linkedin.com/in/ethikautami/",
-              icon: <LuLinkedin size={36} className="icon" />,
-              text: "Ethika Utami"
-            }, {
-              href: "https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com",
-              icon: <MdOutlineEmail size={36} className="icon" />,
-              text: "Ethikautamis@gmail.com"
-            }, {
-              href: "https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio,%20let's%20talk%20about%20it",
-              icon: <LuPhoneCall size={36} className="icon" />,
-              text: "082231651307"
-            }].map(({ href, icon, text }) => (
-              <Link key={text} href={href} className="w-full max-w-[280px] mx-auto">
-                <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
-                  <div className="flex justify-center">{icon}</div>
-                  <p className="text-left">{text}</p>
-                </div>
-              </Link>
-            ))}
-            <div className="w-full max-w-[280px] mx-auto">
-              <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
-                <div className="flex justify-center">
-                  <MdOutlineLocationOn size={36} className="icon" />
-                </div>
-                <p className="text-left">Indonesia</p>
+                <h3 className="animate-fade-left animate-delay-500">
+                  {item.title}
+                </h3>
               </div>
+            ))}
+          </div>
+        </div>
+        <div className="lg:w-3/5 mb-20">
+          <p className="section-title animate-fade-left animate-delay-500">About</p>
+          <p className="mt-6 animate-fade-left animate-delay-2000" >{user?.about}</p>
+        </div>
+      </section>
+      <section className="mt-16 md:py-16 ">{/* portfolio */}
+        <p className="section-title animate-fade-left">Portfolio</p>
+        <ImageSlider />
+      </section>
+      <section className="py-16">{/* experience */}
+        <p className="section-title">Experience</p>
+        {experienceLoading && <p>Loading...</p>}
+        {experienceError && <p>Error: {experienceError}</p>}
+        <OverflowComponent props={experience} />
+        <ArrowDown className="text-gray-400 relative bottom-0 left-1/2 animate-bounce" />
+      </section>
+      <section className="py-16">{/* skill */}
+        <SkillSection />
+      </section>
+      <section id="contact" className="py-16 w-full">{/* contact */}
+        <div className="flex justify-center items-center mb-10 w-full">
+          <div className="hidden sm:block w-[20%] mx-6">
+            <div className="h-1 bg-[#8E1616] w-full"></div>
+          </div>
+          <p className="font-bold text-4xl text-center">Contact</p>
+          <div className="hidden sm:block w-[20%] mx-6">
+            <div className="h-1 bg-[#8E1616] w-full"></div>
+          </div>
+        </div>
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 max-w-[320px] sm:max-w-[600px] lg:max-w-[1200px] mx-auto px-4"
+        >
+          {[{
+            href: "https://www.linkedin.com/in/ethikautami/",
+            icon: <LuLinkedin size={36} className="icon" />,
+            text: "Ethika Utami"
+          }, {
+            href: "https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=ethikautamis@gmail.com",
+            icon: <MdOutlineEmail size={36} className="icon" />,
+            text: "Ethikautamis@gmail.com"
+          }, {
+            href: "https://wa.me/6282231651307?text=Hi,%20I'm%20interesting%20with%20your%20portfolio,%20let's%20talk%20about%20it",
+            icon: <LuPhoneCall size={36} className="icon" />,
+            text: "082231651307"
+          }].map(({ href, icon, text }) => (
+            <Link key={text} href={href} className="w-full max-w-[280px] mx-auto">
+              <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
+                <div className="flex justify-center">{icon}</div>
+                <p className="text-left">{text}</p>
+              </div>
+            </Link>
+          ))}
+          <div className="w-full max-w-[280px] mx-auto">
+            <div className="grid grid-cols-[40px_1fr] items-center gap-x-4">
+              <div className="flex justify-center">
+                <MdOutlineLocationOn size={36} className="icon" />
+              </div>
+              <p className="text-left">Indonesia</p>
             </div>
           </div>
         </div>
-      </>
+      </section>
     </div>
   );
 }
