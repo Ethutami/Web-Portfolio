@@ -36,7 +36,6 @@ const icons = [
           fill="currentColor"
         />
       </svg>
-
     ),
     title: 'Mobile Development'
   },
@@ -52,8 +51,6 @@ const icons = [
         <path d="M131.5 75.5V80C131.5 83.5899 128.59 86.5 125 86.5H8C4.41015 86.5 1.5 83.5898 1.5 80V75.5H131.5Z" stroke="currentColor" strokeWidth="3" />
         <path d="M86.4131 78.5C86.207 79.0823 85.6529 79.5 85 79.5H48C47.3471 79.5 46.793 79.0823 46.5869 78.5H86.4131Z" fill="white" stroke="currentColor" />
       </svg>
-
-
     ),
     title: 'Web Development',
   },
